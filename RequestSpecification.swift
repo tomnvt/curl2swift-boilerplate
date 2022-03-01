@@ -18,10 +18,10 @@ extension RequestSpecification {
 
     var urlRequest: URLRequest {
         var request = getURLRequest()
-        if method == .post { request.httpBody = getHttpBody() }
+        if method != .get { request.httpBody = getHttpBody() }
         return request
     }
-    
+
     private func getURLRequest() -> URLRequest {
         // swiftlint:disable force_unwrapping
         let url = URL(string: baseURL)!
@@ -58,6 +58,6 @@ extension RequestSpecification {
         } else {
             return "\(value)"
         }
-        
+
     }
 }
